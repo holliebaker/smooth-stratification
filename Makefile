@@ -4,14 +4,19 @@ INCLUDES=-I$(saclib)/include
 EXTLIBS=$(saclib)/lib/saclibo.a
 EXE=main
 
+DEPENDENCIES=\
+read_input.o\
+main.o
+
+
 all: opt deb
 
 # optimised
-opt:*.o
+opt:$(DEPENDENCIES)
 	$(CC) $(INCLUDES) $(CFLAGS) -O4 -o $(EXE) *.o $(EXTLIBS)
 
 # debug
-deb:*.o
+deb:$(DEPENDENCIES)
 	$(CC) $(INCLUDES) $(CFLAGS) -g -o $(EXE) *.o $(EXTLIBS)
 
 # clean
