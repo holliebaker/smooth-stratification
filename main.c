@@ -5,8 +5,8 @@
 int sacMain(int argc, const char **argv)
 {
     /* Read data from stdin, robustly, continuing until read is successful. */
-    Word r, P, V, t = 1;
-    while (t != 0) {
+    Word r, P, V, t = 0;
+    while (t != 1) {
         t = read_input(&r, &V, &P);
     }
 
