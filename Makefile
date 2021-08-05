@@ -1,23 +1,32 @@
 CFLAGS=-Wall
 
 INCLUDES=-I$(saclib)/include
-EXTLIBS=$(saclib)/lib/saclibo.a
+
+EXTLIBS=-lreadline
+EXTLIBSOPT=$(saclib)/lib/saclibo.a $(EXTLIBS)
+EXTLIBSDEB=$(saclib)/lib/saclibd.a $(EXTLIBS)
+
+CFLAGS=-Wall
+CFLAGSDEB=-g $(CFLAGS)
+CFLAGSOPT=-O4 $(CFLAGS)
+
 EXE=main
 
 DEPENDENCIES=\
 read_input.o\
 main.o
 
-
 all: opt deb
 
 # optimised
+opt:override CFLAGS = $(CFLAGSOPT)
 opt:$(DEPENDENCIES)
-	$(CC) $(INCLUDES) $(CFLAGS) -O4 -o $(EXE) *.o $(EXTLIBS)
+	$(CC) $(INCLUDES) $(CFLAGSOPT) -o $(EXE) *.o $(EXTLIBSOPT)
 
 # debug
+opt:override CFLAGS = $(CFLAGSDEB)
 deb:$(DEPENDENCIES)
-	$(CC) $(INCLUDES) $(CFLAGS) -g -o $(EXE) *.o $(EXTLIBS)
+	$(CC) $(INCLUDES) $(CFLAGSDEB) -o $(EXE) *.o $(EXTLIBSDEB)
 
 # clean
 clean:

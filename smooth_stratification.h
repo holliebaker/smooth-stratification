@@ -3,6 +3,6 @@
 
 #include "saclib.h"
 
-int read_input(Word *r, Word *P);
+int read_input(Word *r, Word *V, Word *P);
 
 #endif
