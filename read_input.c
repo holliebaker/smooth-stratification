@@ -1,6 +1,17 @@
 #include "saclib.h"
 #include "smooth_stratification.h"
 
+/*======================================================================
+ * Input processing
+ * t <- read_input(r, V, P)
+ *      r: number of variables
+ *      V: variable list, [x1,...,xr]
+ *      P: integral polynomial in [x1,...,xr]
+ *      t: 1 if successful, 0 otherwise
+ *
+ *====================================================================*/
+
+
 int read_input(Word *r_, Word *V_, Word *P_)
 {
     Word r, V, P, t;

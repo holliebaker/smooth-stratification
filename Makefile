@@ -14,6 +14,8 @@ EXE=main
 
 DEPENDENCIES=\
 read_input.o\
+write_output.o\
+stratify.o\
 main.o
 
 all: opt deb
